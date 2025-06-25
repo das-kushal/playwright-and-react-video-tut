@@ -36,4 +36,15 @@ test.describe("Profile Kd83", () => {
     });
     await expect(successMessage).toBeVisible();
   });
+
+  test.only("test api response", async ({ request }) => {
+    const okStatus = 200;
+    const response = await request.get("https://reqres.in/api/users?page=2");
+    expect(response.status()).toBe(okStatus);
+
+    const data = await response.text();
+    expect(data).toContain("Michael");
+
+    console.log("Response data:", await response.json());
+  });
 });
