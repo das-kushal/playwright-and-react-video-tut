@@ -12,7 +12,7 @@ export default function Form() {
     <div style={{ padding: "20px", display: "flex", flexDirection: "column" }}>
       <h3>Form page</h3>
       <Link to="https://playwright.com">Go to Playwright</Link>
-      <Link to="/">Go to Home</Link>
+      <Link to="/">Go to Home!!!</Link>
       <form
         style={{
           margin: "20px",
