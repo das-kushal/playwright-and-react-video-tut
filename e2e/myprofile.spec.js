@@ -39,7 +39,7 @@ test.describe("Profile Kd83", () => {
 
   test.only("test api response", async ({ request }) => {
     const okStatus = 200;
-    const response = await request.get("https://reqres.in/api/users?page=2");
+    const response = await request.get("https://reqres.in/api/users?page=2"); // url is not working
     expect(response.status()).toBe(okStatus);
 
     const data = await response.text();
