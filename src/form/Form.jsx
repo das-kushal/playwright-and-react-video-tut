@@ -21,7 +21,7 @@ export default function Form() {
           gap: "10px",
         }}
       >
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Enter Name</label>
         <input
           type="text"
           id="name"
