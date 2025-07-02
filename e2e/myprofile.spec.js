@@ -6,10 +6,14 @@ test.describe("api testing",()=> {
     const response = await request.get("https://reqres.in/api/users?page=2"); // url is not working
     expect(response.status()).toBe(okStatus);
 
-    const data = await response.text();
-    expect(data).toContain("Michael");
+    // const data = await response.text();
+    const res = await response.json();
+    const data=res.data;
+    console.log(res);
+    expect(res.total).toBe(12);
+    expect(res.per_page).toBe(6);
+    expect(JSON.stringify(data)).toContain("Michael");
 
-    console.log("Response data:", await response.json());
   });
 });
 
