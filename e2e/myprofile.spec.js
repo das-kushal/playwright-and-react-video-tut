@@ -1,5 +1,18 @@
 import { test, expect } from "@playwright/test";
 
+test.describe("api testing",()=> {
+  test("test api response", async ({ request }) => {
+    const okStatus = 200;
+    const response = await request.get("https://reqres.in/api/users?page=2"); // url is not working
+    expect(response.status()).toBe(okStatus);
+
+    const data = await response.text();
+    expect(data).toContain("Michael");
+
+    console.log("Response data:", await response.json());
+  });
+});
+
 test.describe("Profile Kd83", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://kushaldas-me.vercel.app/");
@@ -37,14 +50,12 @@ test.describe("Profile Kd83", () => {
     await expect(successMessage).toBeVisible();
   });
 
-  test("test api response", async ({ request }) => {
-    const okStatus = 200;
-    const response = await request.get("https://reqres.in/api/users?page=2"); // url is not working
-    expect(response.status()).toBe(okStatus);
-
-    const data = await response.text();
-    expect(data).toContain("Michael");
-
-    console.log("Response data:", await response.json());
-  });
+  test("visual testing", async ({page})=> {
+    await page.waitForLoadState("networkidle")
+    await expect(page).toHaveScreenshot("profile-shot.png", {
+      mask:[
+        page.locator("image"),
+      ]
+    });
+  })
 });
