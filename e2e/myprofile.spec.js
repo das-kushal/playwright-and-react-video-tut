@@ -52,7 +52,7 @@ test.describe("Profile Kd83",() => {
     await page.goto("https://kushaldas-me.vercel.app/");
   });
 
-  test("my profile page",async ({ page }) => {
+  test.only("my profile page",async ({ page }) => {
     await expect(page).toHaveTitle("Kushal Das - Portfolio");
 
     await expect
@@ -62,7 +62,9 @@ test.describe("Profile Kd83",() => {
     await expect(
       page.getByText("Program Associate @ Wells Fargo")
     ).toBeVisible();
-    await page.getByRole("button",{ name: "Contact Me" }).click();
+
+    await page.pause();
+    // await page.getByRole("button",{ name: "Contact Me" }).click();
     await page.screenshot({ path: "profile-shot.png",fullPage: false });
   });
 
@@ -95,3 +97,5 @@ test.describe("Profile Kd83",() => {
     });
   })
 });
+
+
