@@ -39,3 +39,5 @@ test('usd vol', async ({ page }) => {
     await page.getByTestId('popup-balloon-id').locator('div').first().click();
     await page.getByTestId('popup-balloon-id').locator('div').first().click();
 });
+
+
